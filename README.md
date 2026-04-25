@@ -31,7 +31,8 @@ Click **"Use this template"** on GitHub to create a clean repository. Clone it t
 ```bash
 git clone [https://github.com/knightnum/your-new-project.git](https://github.com/knightnum/your-new-project.git)
 cd your-new-project
-2. Environment ConfigurationCreate a local environment file. Never commit the .env file to version control.Bashcp .env.example .env
+
+### 2. Environment ConfigurationCreate a local environment file. Never commit the .env file to version control.Bashcp .env.example .env
 Open .env and configure your instance identity:VariableDescriptionRecommended ValuePROJECT_NAMEUnique project identifierknightnum-app-01HOST_PORTPort accessible via Browser80813. Launching ServicesBuild and start the orchestration in detached mode:Bashdocker compose up -d --build
 📁 Project Directory MapPlaintext.
 ├── docker/
@@ -40,4 +41,5 @@ Open .env and configure your instance identity:VariableDescriptionRecommended Va
 ├── src/            # Application Source Code (Volume Mounted)
 ├── .env.example    # Environment template
 └── docker-compose.yml
+
 🛡️ Security & MaintenanceImmutable Infrastructure: Containers are stateless. Keep persistent data in external volumes.Log Management: Check logs using docker compose logs -f web.Resource Cleanup: Remove unused images with docker image prune.📧 Support & ContactFor technical inquiries or enterprise support, please contact:Knightnum Limited Professional Full-Stack & Networking Solutions© 2026 Knightnum Limited. All rights reserved.
