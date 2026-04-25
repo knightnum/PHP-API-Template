@@ -1,64 +1,43 @@
-# 🚀 Knightnum Professional Docker Template
+# 🚀 Docker Architecture
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![PHP](https://img.shields.io/badge/php-%23777bb4.svg?style=for-the-badge&logo=php&logoColor=white)
+![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)
 
-A high-performance, production-ready Docker template designed by **Knightnum Limited**. This template provides a pre-configured environment for PHP-API or Static HTML projects.
+An enterprise-grade Dockerized environment designed for high-availability and scalable web applications, developed and maintained by **Knightnum Limited**.
+
+---
+
+## 🏗 System Architecture
+This template utilizes a decoupled architecture, separating the web server (Nginx) from the application logic (PHP-FPM) to ensure maximum performance and security.
+
+- **Frontend:** Nginx (Alpine Linux)
+- **Backend:** PHP 8.2-FPM (Alpine Linux)
+- **Networking:** Isolated Docker Bridge Network
+
+---
 
 ## 🛠 Prerequisites
-- **Docker** (v20.10+)
-- **Docker Compose** (v2.0+)
-- Basic knowledge of Terminal/Command Line
+Ensure your host machine (e.g., Dell OptiPlex, Lenovo Tiny, or Cloud VPS) meets the following requirements:
+- **Docker Engine** v20.10.0+
+- **Docker Compose** v2.0.0+
+- **Minimum RAM:** 512MB per instance
 
-## 🚀 Getting Started
+---
 
-### 1. Initialize Project
-Click the **"Use this template"** button on GitHub to create your own repository. Then clone it to your local machine:
+## 🚀 Deployment Workflow
 
-git clone [https://github.com/your-username/your-project-name.git](https://github.com/your-username/your-project-name.git)
-cd your-project-name
-
-2. Configuration (Crucial Step)
-Before running the containers, you must setup your environment variables. Copy the example file:
-
-Bash
-cp .env.example .env
-
-3. Customizing Your Project
-Open the .env file and modify the following values to avoid conflicts with other projects:
-PROJECT_NAME: This will affect the Prefix of your network and volumes.
-CONTAINER_NAME_PREFIX: (Optional) Used to identify your containers in docker ps.
-HOST_PORT: Change this to any available port (e.g., 8081, 8082, 9000) to access your web app.
-
-Example .env configuration:
-PROJECT_NAME=knightnum-crm
-HOST_PORT=8085
-
-4. Deployment
-Run the following command to start the services in detached mode:
-
-Bash
-docker compose up -d --build
-🌐 Accessing the App
-Once started, your application will be available at:
-
-Local: http://localhost:YOUR_HOST_PORT
-
-Network: http://your-server-ip:YOUR_HOST_PORT
-
-📁 Project Structure
-/src - Place your PHP/HTML source code here (Hot-reload enabled).
-
-/docker - Contains server configurations (Nginx/PHP-FPM).
-
-docker-compose.yml - Main orchestration file.
-
-.env - Environment-specific variables (Not tracked by Git).
-
-🐳 Useful Docker Commands
-Stop services: docker compose down
-
-View logs: docker compose logs -f
-
-Restart services: docker compose restart
-
-Check container status: docker ps
-
-Developed and Maintained by Knightnum Limited
+### 1. Initialize from Template
+Click **"Use this template"** on GitHub to create a clean repository. Clone it to your production server:
+```bash
+git clone [https://github.com/knightnum/your-new-project.git](https://github.com/knightnum/your-new-project.git)
+cd your-new-project
+2. Environment ConfigurationCreate a local environment file. Never commit the .env file to version control.Bashcp .env.example .env
+Open .env and configure your instance identity:VariableDescriptionRecommended ValuePROJECT_NAMEUnique project identifierknightnum-app-01HOST_PORTPort accessible via Browser80813. Launching ServicesBuild and start the orchestration in detached mode:Bashdocker compose up -d --build
+📁 Project Directory MapPlaintext.
+├── docker/
+│   ├── nginx/      # Nginx server configuration
+│   └── php/        # Custom PHP-FPM Dockerfile with Extensions
+├── src/            # Application Source Code (Volume Mounted)
+├── .env.example    # Environment template
+└── docker-compose.yml
+🛡️ Security & MaintenanceImmutable Infrastructure: Containers are stateless. Keep persistent data in external volumes.Log Management: Check logs using docker compose logs -f web.Resource Cleanup: Remove unused images with docker image prune.📧 Support & ContactFor technical inquiries or enterprise support, please contact:Knightnum Limited Professional Full-Stack & Networking Solutions© 2026 Knightnum Limited. All rights reserved.
